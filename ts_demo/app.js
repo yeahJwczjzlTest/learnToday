@@ -1,3 +1,8 @@
+/**
+ * 更改一下,试试 Document This 是不是好用.哇哈哈
+ *
+ * @class Student
+ */
 var Student = (function () {
     function Student(firstName, lastName) {
         this.firstName = firstName;
