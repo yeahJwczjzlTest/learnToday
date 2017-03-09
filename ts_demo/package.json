@@ -1,0 +1,22 @@
+{
+  "name": "jwczjzl_ts_learn",
+  "version": "1.0.0",
+  "description": "learnToday_Git and fendou",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yeahJwczjzlTest/learnToday.git"
+  },
+  "keywords": [
+    "learnToday"
+  ],
+  "author": "zhangjie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeahJwczjzlTest/learnToday/issues"
+  },
+  "homepage": "https://github.com/yeahJwczjzlTest/learnToday#readme"
+}
