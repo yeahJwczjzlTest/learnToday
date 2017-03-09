@@ -1,3 +1,9 @@
+
+/**
+ * 更改一下,试试 Document This 是不是好用.哇哈哈
+ * 
+ * @class Student
+ */
 class Student{
 
     firstName:string;
