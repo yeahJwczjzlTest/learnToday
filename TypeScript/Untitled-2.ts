@@ -222,3 +222,57 @@ kitty = {
     numLives : numLiveForCat
 }
 
+// =------------------------------------------
+
+// 解构:数组的解构,函数解构,对象解构
+
+//数组:
+
+let inputt = [1,2];
+let [first,second] = inputt;
+console.log(first); // 1;
+console.log(second); // 2;
+first = inputt[0];
+second = inputt[1];
+//解构相当于创建了两个变量对应的是数组的索引,直接调用可以访问到数组对应的元素;
+[first,second] = [3,5]; // 已经声明的变量调换位置
+//这里做个解释: 参数声明部分意思是使用解构方法传入一个数组,前面是解构用法,后面的[]里面是数组的类型
+
+// 针对函数参数而言
+function testMyInput([first,second]:[number,number]) {
+    console.log(first);
+    console.log(second);
+}
+testMyInput(inputt);
+
+// 看不懂这个错误是咋来的,
+
+// 创建剩余变量
+
+let [num1, ...rest] = [1,2,3,4,5];
+console.log(num1); // 1
+console.log(rest);// [2,3,4,5];
+
+// JavaScript 可以忽略不关心的元素;
+let [,n2,n3,,n5] = [1,2,3,4,5];
+let [fristNum] = [1,2,3,4,5];
+console.log(fristNum); // 1;
+
+// 对象的解构:
+let ooo = {
+    a:'foo',
+    b:'12',
+    c:'bar'
+}
+// 创建对象解构:
+let {a,b} = ooo;
+
+
+// 也可以直接使用免声明的赋值方式
+let duixiang = {
+    nan:'你的男朋友',
+    nv:'我的女朋友',
+    xingbie:'不重要'
+}
+let {nan,xingbie} = duixiang;
+({ nan,xingbie } = {nan:'89757',xingbie:'99999'});
