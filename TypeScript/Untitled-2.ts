@@ -235,7 +235,7 @@ console.log(second); // 2;
 first = inputt[0];
 second = inputt[1];
 //解构相当于创建了两个变量对应的是数组的索引,直接调用可以访问到数组对应的元素;
-[first,second] = [3,5]; // 已经声明的变量调换位置
+[first,second] = [second,first]; // 已经声明的变量调换位置
 //这里做个解释: 参数声明部分意思是使用解构方法传入一个数组,前面是解构用法,后面的[]里面是数组的类型
 
 // 针对函数参数而言
@@ -243,7 +243,8 @@ function testMyInput([first,second]:[number,number]) {
     console.log(first);
     console.log(second);
 }
-testMyInput(inputt);
+testMyInput(inputt[]);
+// Error: Argument of type 'number[]' is not assignable to parameter of type '[number, number]' Property '0' is missing in type 'number[]'
 
 // 看不懂这个错误是咋来的,
 
@@ -266,13 +267,58 @@ let ooo = {
 }
 // 创建对象解构:
 let {a,b} = ooo;
-
-
-// 也可以直接使用免声明的赋值方式
-let duixiang = {
-    nan:'你的男朋友',
-    nv:'我的女朋友',
-    xingbie:'不重要'
+// 
+let students = {
+    name:'zhangjie',
+    age:26,
+    job:'it'
 }
-let {nan,xingbie} = duixiang;
-({ nan,xingbie } = {nan:'89757',xingbie:'99999'});
+// let { name:myName,age:myAge } = students; // 这种写法给解构变量设置别名
+let { name:myName,age:myAge }:{name:string,age:number} = students; // 设置别名+设置类型
+
+// 解构中的默认值:默认值可以在属性为 undefined 的时,使用默认初始值
+
+function keepWholiObj(wholeObj:{a:string,b?:number}) {
+    let {a,b=1001} = wholeObj;
+}
+// 上面的例子说明当 b 为 undefined 的时候a,b也会有值输出.
+
+// 函数声明:结构用于函数声明
+type C = {a:string,b?:number};
+// TypeScript 中可以使用 type 关键字来声明类型别名;
+function xc({a,b}:C):void {
+    console.log(a);
+    console.log(b);
+}
+// 通常情况下用于制定默认值,首先需要提前知道属性的类型,其次需要知道哪一个属性是可选属性.
+
+function xxc({a,b=0}={a:''}) {
+    console.log(a);
+    console.log(b);
+}
+xxc(); // a:'' b:0
+// 冒号: 后面接 类型 或者 变量别名
+// 等号: 后面接默认值 或者 赋值 
+// 解构的使用需要小心谨慎,因为很难理解,默认值和类型注解也让人头疼不已,尽量小而简单.
+
+// -------------------------------------------------------------------
+
+// 展开:!!!!!
+// 和解构在一定意义上是相反的操作:将数组展开为另一个数组,将对象展开为另一个对象!
+//例:数组的展开=>
+let noOne = [1,2,3,4];
+let noTwo = ['zhang','jie'];
+let bothOT = [0,...noOne,...noTwo,9,8]; // 这个就是展开后的新数组
+// [0,1,2,3,4,'zhang','jie',9,8]
+// 展开操作创建了 noOne 和 noTwo 的浅拷贝,不会改变其内容.
+
+
+// 对象的展开:
+let myObjOne = { name : 'zhangjie',age : 28};
+let myInfo = { ...myObjOne,name : 'zhangjieMax',school : 'daxt'};// 这样的 myObjOne 里面的name属性会被后面的name重写为 "zhangjieMax";
+// 另外,对象展开会丢失对象方法,不允许展开泛型函数上的类型参数.
+
+
+
+
+
