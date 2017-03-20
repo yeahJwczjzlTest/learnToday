@@ -138,6 +138,18 @@ interface ClockInterface{
 
 class Clock implements ClockInterface{
     currentTime:Date;
-    constructor(h:number,m:number){}// 这句话的意思就是规定通过这个累构造的函数参数???????   有点迷糊!!
+    constructor(h:number,m:number){}// 这句话规定了 类参数的数量和类型
 }
+/**
+ * 接口描述了类的 "公共部分" , 不会帮助检查类是否具有某些私有成员.
+ * 
+ */ 
 
+interface ClockConstruction{
+    new (name:string,age:number);
+}
+class MyClock implements ClockConstruction{
+    currentTime:Date;
+    constructor(name:string,age:number){}
+
+}
