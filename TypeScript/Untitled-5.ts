@@ -93,3 +93,9 @@ function exp_one(firstName:string,lastName?:string)=>string
  * 默认值参数不是必须放在必要参数后面,如果默认参数出现在必选参数前面那么必须传入 undefined 才能获取到默认值
  */
 
+// 下面重写一下函数验证一下:
+function buildNameX(firstName = 'Will',lastName:string){
+    return `${firstName} ${lastName}`;
+}
+let test_a = buildNameX('jie'); // Error : Supplied parameters do not match any signature of call target.  没有获取到 默认值
+let test_b = buildNameX(undefined,'jie'); // 正确 
