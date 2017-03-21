@@ -114,3 +114,36 @@ function buildSubName(firstName:string, ...lastNames:string[]){
 }
 let test_sub_a = buildSubName('zhang','jie','zhang','lu','xiongmei'); // zhang jie zhang lu xiongmei 
 
+/**
+ * this 想要保存函数创建时的 this 那么就需要使用 ECMAScript6 标准中的 箭头函数;因为箭头函数会保存函数创建时的this值;
+ */
+
+/**
+ * this 参数
+ */
+
+interface Card{
+    suit:string;
+    card:number;
+}
+
+
+interface Deck{
+    suits:string[];
+    cards:number[];
+    pickSuitsCard(this:Deck):()=>Card;
+}
+
+let deck:Deck = {
+    suits:['hearts','spades','clubs','diamonds'],
+    cards:Array(52),
+    pickSuitsCard:function (this:Deck) {
+        return ()=>{
+            let pickNum = Math.floor(Math.random()*52);
+            let pickSuits = Math.floor(pickNum / 13);
+            return {suit:this.suits[pickSuits],card:pickNum%13};
+        }
+    }
+}
+
+ 
