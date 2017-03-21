@@ -131,7 +131,7 @@ interface Card{
 interface Deck{
     suits:string[];
     cards:number[];
-    pickSuitsCard(this:Deck):()=>Card;
+    pickSuitsCard(this:Deck):()=>Card; // 箭头函数 ES6
 }
 
 let deck:Deck = {
@@ -147,3 +147,10 @@ let deck:Deck = {
 }
 
 // 有点迷糊!
+
+/**
+ * 重载!!! 根据参数的不同,返回不同的结果
+ */
+
+let pathx = 'https://zhongsp.gitbooks.io/typescript-handbook/content/doc/handbook/Functions.html';
+console.log('请看链接最后的例子:'+ pathx);
