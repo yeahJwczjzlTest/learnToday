@@ -99,3 +99,18 @@ function buildNameX(firstName = 'Will',lastName:string){
 }
 let test_a = buildNameX('jie'); // Error : Supplied parameters do not match any signature of call target.  没有获取到 默认值
 let test_b = buildNameX(undefined,'jie'); // 正确 
+
+
+
+
+/**
+ * 剩余参数: 必要参数,可选参数,默认参数 都表示一个参数
+ * 如果需要操作多个参数,或不知道多少参数.在 JavaScript里 可以使用 arguments 来获取;
+ * 在 TypeScript 里可以把所有参数收集到一个变量里.
+ */
+
+function buildSubName(firstName:string, ...lastNames:string[]){
+    return firstName + ' ' + lastNames.join(' ');
+}
+let test_sub_a = buildSubName('zhang','jie','zhang','lu','xiongmei'); // zhang jie zhang lu xiongmei 
+
