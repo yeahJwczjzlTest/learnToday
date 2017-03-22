@@ -67,3 +67,19 @@ function myIdentity<T>(argf:T):T{
     return argf;
 }
 let test_func_interface_with_T:Interface4TTT<number> = myIdentity; // 这里的 <number> 就是类型;
+
+
+/**
+ * 泛型类:使用 <> 将泛型类型括起来放在类名后面
+ * 泛型类就不局限于使用一种数据类型了,可以是多种数据类型;
+ * 类中的实例部分可以使用泛型,静态部分则不能!
+ */
+
+class FXClass<T>{
+    zeroValue:T;
+    add:(x:T,y:T)=>T;
+}
+let myGenNum = new FXClass<number>();
+myGenNum.zeroValue = 0;
+myGenNum.add = function (x,y){return x+y;};
+
