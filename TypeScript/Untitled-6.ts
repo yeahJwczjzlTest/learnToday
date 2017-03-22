@@ -34,4 +34,36 @@ function identityTTX<T>(args:Array<T>):Array<T>{
 
 /**
  * 泛型类型: 研究函数本身 + 如何创建泛型接口!
+ * 和创建普通函数一样,只不过在参数括号前面多了一个 '类型参数' : <T>
  */
+
+
+let typeFunc:<T>(args:T)=>T = identityx;
+let typeFunc_2:<U>(args:U)=>U=identityx; // 类型参数可以不一定是 T 只要数量和使用方式正确即可
+let typeFunc_3:{<T>(args:T):T} = identityx; //签名的对象字面量 定义泛型函数
+
+/**
+ * 泛型接口:
+ */
+
+interface GenericIndentity{
+    <T>(args:T):T;
+}
+
+function identity4Interface<T>(xxx:T):T{
+    return xxx;
+}
+
+let myInterfaceIdentity:GenericIndentity = identity4Interface
+/**
+ * 泛型接口的另一种写法=> 将 泛型参数 作为接口的一个参数 这话就可以看到具体使用的是那种类型了
+ */
+
+interface Interface4TTT<T>{
+    (argx:T):T;
+}
+
+function myIdentity<T>(argf:T):T{
+    return argf;
+}
+let test_func_interface_with_T:Interface4TTT<number> = myIdentity; // 这里的 <number> 就是类型;
