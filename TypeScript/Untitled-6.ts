@@ -83,3 +83,21 @@ let myGenNum = new FXClass<number>();
 myGenNum.zeroValue = 0;
 myGenNum.add = function (x,y){return x+y;};
 
+/**
+ * 泛型约束!其实就是给泛型参数一个接口进行约束,然后泛型就变得不是那么可以适用于所有类型了,传入的参数要求必须符合接口规则
+ */
+
+interface LengthRule{
+    length:number;
+}
+function myObj4T<T extends LengthRule>(args:T):T{
+    return args;
+}
+
+myObj4T(4); // Error:Argument of type '4' is not assignable to parameter of type 'LengthRule'.
+myObj4T('sssss');
+// Argument of type '{ name: string; }' is not assignable to parameter of type 'LengthRule'.
+// Object literal may only specify known properties, and 'name' does not exist in type 'LengthRule'.
+myObj4T({name:'zhangjie'});
+
+myObj4T({length:9,name:'zhangjie'}); // 这个就对了,因为接口规定了 必须有length属性!!!!!
