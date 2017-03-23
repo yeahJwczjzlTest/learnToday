@@ -101,3 +101,8 @@ myObj4T('sssss');
 myObj4T({name:'zhangjie'});
 
 myObj4T({length:9,name:'zhangjie'}); // 这个就对了,因为接口规定了 必须有length属性!!!!!
+
+
+/**
+ * 
+ */ 
