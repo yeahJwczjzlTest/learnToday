@@ -50,3 +50,10 @@ if(isFish(pet)){
     pet.fly();
 }
 
+/**
+ * typeof 类型保护
+ * 在 TypeScript 中, typeof 作为类型保护关键字只允许写成如下两种形式:
+ * 1.typeof v == 'typeName'
+ * 2.typeof v !== 'typeName'
+ * 其中的 "typeName" 只允许 'string' 'number' 'boolean' 'symbol'
+ */
