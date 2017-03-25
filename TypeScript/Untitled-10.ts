@@ -24,3 +24,28 @@ let pet = animal_common();
 pet.layEggs(); // 共有的 " 下蛋 "
 pet.swim(); // Property 'swim' does not exist on type 'Fish | Bird'.Property 'swim' does not exist on type 'Bird'.
 
+/**
+ * 类型保护与区分类型,
+ * 为了让 pet 变量可以访问各自内部的专有方法,可以使用类型断言来实现
+ */
+
+if((<Fish>pet).swim()){
+    (<Fish>pet).swim();
+}else{
+    (<Bird>pet).fly();
+}
+
+/**
+ * 用户自定义类型保护,返回一个 类型谓词 =>  parameterName is Type , 其中 parameterName 必须是当前函数的一个参数
+ * 还可以先定义一个函数用来判断到底是哪个!
+ */
+
+function isFish(pet:Fish | Bird):pet is Fish {
+    return (<Fish>pet).swim !== undefined;
+}
+
+if(isFish(pet)){
+    pet.swim();
+}else{
+    pet.fly();
+}
