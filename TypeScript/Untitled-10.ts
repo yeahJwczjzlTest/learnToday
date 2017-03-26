@@ -96,3 +96,57 @@ if (padder instanceof SpaceRepeatingPadder){
 if (padder instanceof StringPadder){
     padder;
 }
+/**
+ * 可以为 null 的类型.
+ * 在 TypeScript 里面有两个特殊的类型: null 和 undefined ,它们分别具有 null 和 undefined 值.
+ * 一般情况下,类型检查器认为 null 和 undefined 可以赋值给任何类型;这就意味着不能阻止它们赋值给其他变量.
+ * 在 TypeScript 里; 使用编译标记 --strictNullCheck 可以解决此错误:当声明一个变量时,就不会自动包含 null 和 undefined 了;
+ * 可以用联合类型手动指定;
+ * 注意，按照 JavaScript 的语义，TypeScript 会把 null 和 undefined 区别对待。 
+ * string | null，string | undefined和string | undefined | null 是不同的类型。
+ */
+
+/**
+ * 使用了 --strictNullCheck 编译标记后,可选参数和可选属性都会被加上 | undefined 类型;
+ */
+
+/**
+ * 类型保护和类型断言: 由于可以为 null 的类型是由 联合类型 实现的.所以需要使用类型保护来去除 null
+ */
+// 通常办法
+function myTest(name:string | null){
+    if(name == null){
+        return 'default';
+    }else{
+        return name;
+    }
+}
+
+// 短路运算符:
+function myTest_2(name: string | null){
+    return name || 'default';
+}
+
+// 如果编译器不能去除 null 还可以使用 类型断言 来去除 null ;
+// 使用方法: 在 string | null 类型的变量后加上 ! 就是去除了 null 
+// 使用嵌套函数来举例子
+
+function broken (name:string|null):string{
+    function postfix (epithet:string){
+        // Error : name 可能是 null 类型.
+        return name.charAt(0) + '. the' + epithet;
+    }
+    name = name || 'zhangjie';
+    return postfix('Great!');
+}
+
+// 更改后的样子:
+function fixed (name:string|null):string{
+    function postfix(epithet:string){
+        // OK
+        return name!.charAt(0) + '. the' + epithet;
+    }
+    name = name||'zhangjie';
+    return postfix('Great!');
+}
+
