@@ -218,3 +218,35 @@ class UIEelments{
 let test1 = new UIEelments();
 test1.animate(0,0,'Easy-in'); // OK
 test1.animate(0,0,'fuck'); //  Argument of type '"fuck"' is not assignable to parameter of type 'Easing'.
+
+/**
+ * 可辨识联合 .   Discriminated Unions . 
+ */
+
+interface Square{
+    kind : 'Square';
+    size : number;
+}
+interface Rectangle{
+    kind : 'Rectangle';
+    widht : number;
+    height : number;
+}
+interface Circle{
+    kind : 'Circle';
+    radius : number;
+}
+
+type Shape = Square | Rectangle | Circle;
+
+function area(shape:Shape):number{
+    switch(shape.kind){
+        case 'Square':return shape.size * shape.size;
+        case 'Rectangle':return shape.widht * shape.height;
+        case 'Circle':return Math.PI * shape.radius ** 2;
+    }
+}
+
+/**
+ * 上面就是所说的可辨识联合 : 类型!!!!!!1
+ */
