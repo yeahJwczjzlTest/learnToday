@@ -150,3 +150,46 @@ function fixed (name:string|null):string{
     return postfix('Great!');
 }
 
+/**
+ * 类型别名:给一个类型起个新名字,类似于 接口 但是可以作用于 原始值 联合类型 元组 和 其他需要手写的类型;
+ */
+
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+
+function getName (name:NameOrResolver){
+    if(typeof name === 'string'){
+        return name;
+    }else{
+        return name();
+    }
+}
+
+// 类型别名也可以是泛型的 
+type fanxing<T> = {name:T};
+// 可以使用类型别名在属性里引用自己:::::::
+type Obj4me<T> = {
+    name : string;
+    left : Obj4me<T>;
+    right : Obj4me<T>;
+}
+// 类型声明不能出现在声明右侧的任何地方
+
+
+/**
+ * 接口 vs. 类型别名
+ * 
+ * 其一，接口创建了一个新的名字，可以在其它任何地方使用。 类型别名并不创建新名字—比如，错误信息就不会使用别名。 
+ * 在下面的示例代码里，在编译器中将鼠标悬停在interfaced上，显示它返回的是Interface，但悬停在aliased上时，显示的却是对象字面量类型
+ * 
+ * 如果你无法通过接口来描述一个类型并且需要使用联合类型或元组类型，这时通常会使用类型别名。
+ * 类型别名不能被extends和implements
+ */
+
+type Alias = { num: number }
+interface Interface {
+    num: number;
+}
+declare function aliased(arg: Alias): Alias;
+declare function interfaced(arg: Interface): Interface;
