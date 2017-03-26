@@ -57,3 +57,42 @@ if(isFish(pet)){
  * 2.typeof v !== 'typeName'
  * 其中的 "typeName" 只允许 'string' 'number' 'boolean' 'symbol'
  */
+
+/**
+ * instanceof 类型保护
+ * instanceof 右侧必须是一个构造函数,进行类型检查时;优先考虑 1,在类型不为 any 的情况下=>原型的类型 ; 2.构造函数签名返回类型的联合
+ */
+
+interface Padder{
+    getPaddingString():string;
+}
+
+class SpaceRepeatingPadder implements Padder{
+    constructor(private numberSpace:number){}
+    getPaddingString(){
+        return Array(this.numberSpace + 1).join(' ');
+    }
+}
+
+class StringPadder implements Padder{
+    constructor(private stringValue:string){}
+    getPaddingString(){
+        return this.stringValue;
+    }
+}
+
+function getRandomPadder(){
+    return Math.random() < 0.5?
+        new SpaceRepeatingPadder(4):
+        new StringPadder(' ');
+}
+
+// 类型为 SpaceRepeatingPadder | StringPadder
+let padder:Padder = getRandomPadder();
+
+if (padder instanceof SpaceRepeatingPadder){
+    padder;
+}
+if (padder instanceof StringPadder){
+    padder;
+}
