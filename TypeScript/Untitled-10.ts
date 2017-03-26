@@ -193,3 +193,28 @@ interface Interface {
 }
 declare function aliased(arg: Alias): Alias;
 declare function interfaced(arg: Interface): Interface;
+
+/**
+ * 字符串字面量类型:    '我' | '你' | '它'
+ * 指定字符串固定值,引用此类型的时候只能访问写好的固定值,访问不存在的值会报错;
+ * 字符串字面量类型还可以用于区分函数重载.
+ */
+
+type Easing = 'Easy-in'| 'Easy-out' | 'Easy-in-out';
+class UIEelments{
+    animate(dx:number,ax:number,easy:Easing){
+        if(easy === 'Easy-in'){
+
+        }else if(easy === 'Easy-in-out'){
+
+        }else if(easy === 'Easy-out'){
+
+        }else{
+            console.log('Error!不存在的');
+        }
+    }
+}
+
+let test1 = new UIEelments();
+test1.animate(0,0,'Easy-in'); // OK
+test1.animate(0,0,'fuck'); //  Argument of type '"fuck"' is not assignable to parameter of type 'Easing'.
