@@ -334,3 +334,15 @@ let secondObj = new myThis_sub()
                 .subtraction(9)
                 .xx(4);
                 // 可以这样调用是因为 返回的都是 this 
+
+/**
+ * 索引类型:引入新的操作符  keyof T 对于任何类型 T 来说, keyof T 的结果是 T 上已知的所有公共属性组成的联合类型;=> 索引类型查询操作符
+ * 第二个引入的操作符是 T[K] => 索引访问操作符
+ */
+
+function pluck<T ,K extends keyof T>(o:T,names:K[]):T[K][]{
+    return names.map(n => o[n]);
+}
+/**
+ * 不太懂!劳什子索引类型!!!!
+ */
