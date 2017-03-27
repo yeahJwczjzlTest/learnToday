@@ -223,30 +223,78 @@ test1.animate(0,0,'fuck'); //  Argument of type '"fuck"' is not assignable to pa
  * 可辨识联合 .   Discriminated Unions . 
  */
 
+// interface Square{
+//     kind : 'Square';
+//     size : number;
+// }
+// interface Rectangle{
+//     kind : 'Rectangle';
+//     widht : number;
+//     height : number;
+// }
+// interface Circle{
+//     kind : 'Circle';
+//     radius : number;
+// }
+
+// type Shape = Square | Rectangle | Circle;
+
+// function area(shape:Shape):number{
+//     switch(shape.kind){
+//         case 'Square':return shape.size * shape.size;
+//         case 'Rectangle':return shape.widht * shape.height;
+//         case 'Circle':return Math.PI * shape.radius ** 2;
+//     }
+// }
+
+/**
+ * 上面就是所说的可辨识联合 : 类型!!!!!!
+ */
+
+/**
+ * 完整性检查,我们对 Shape 添加 Triangl 如果我们不更新 area 的话,需要抛出错误.
+ */
+
 interface Square{
     kind : 'Square';
     size : number;
 }
 interface Rectangle{
     kind : 'Rectangle';
-    widht : number;
+    width : number;
     height : number;
+}
+interface Triangle{
+    kind : 'Triangle';
+    one : number;
+    two : number;
+    three : number;
 }
 interface Circle{
     kind : 'Circle';
     radius : number;
 }
 
-type Shape = Square | Rectangle | Circle;
+type Shape = Circle | Triangle | Rectangle | Square;
 
-function area(shape:Shape):number{
-    switch(shape.kind){
-        case 'Square':return shape.size * shape.size;
-        case 'Rectangle':return shape.widht * shape.height;
-        case 'Circle':return Math.PI * shape.radius ** 2;
+// 第一种类型检查的方法:给函数一个返回值类型,如果 switch 不够包含所有情况,那么会抛出一个错误.因为实际上的返回值是 number | undefined 这个;
+function area_1 (s:Shape):number{
+    switch(s.kind){
+        case 'Circle':return s.radius ** 2 * Math.PI;
+        case 'Square':return s.size ** 2;
+        case 'Rectangle':return s.height * s.width;
+    }
+}
+// 第二种,创建一个 never 类型函数;用来检查 s 是否为 never 类型(去除所有可能之后的类型)
+function assertNever(x:never):never{
+    throw new Error("Unexpected object: " + x);
+}
+function area_2(s:Shape){
+    switch (s.kind){
+        case 'Circle':return s.radius ** 2 * Math.PI;
+        case 'Square':return s.size ** 2;
+        case 'Rectangle':return s.height * s.width;
+        default:return assertNever(s);// Error : Argument of type 'Triangle' is not assignable to parameter of type 'never'.
     }
 }
 
-/**
- * 上面就是所说的可辨识联合 : 类型!!!!!!
- */
