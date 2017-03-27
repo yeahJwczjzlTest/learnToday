@@ -298,3 +298,39 @@ function area_2(s:Shape){
     }
 }
 
+/**
+ * 多态的 this 类型:
+ */
+class myThis{
+    public constructor(protected value:number = 0){}
+    public currentValue():number{
+        return this.value;
+    }
+    public add(num1:number){
+        this.value += num1;
+        return this;
+    }
+    public subtraction(num2:number){
+        this.value -= num2;
+        return this;
+    }
+
+}
+
+class myThis_sub extends myThis{
+    public constructor(value = 0){
+        super(value);
+    }
+    public xx(myNum:number){
+        return this;
+    }
+    public myXx(){
+        return this;
+    }
+}
+let secondObj = new myThis_sub()
+                .add(6)
+                .myXx()
+                .subtraction(9)
+                .xx(4);
+                // 可以这样调用是因为 返回的都是 this 
