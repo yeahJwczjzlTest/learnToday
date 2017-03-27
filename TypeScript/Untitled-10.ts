@@ -299,7 +299,7 @@ function area_2(s:Shape){
 }
 
 /**
- * 多态的 this 类型:
+ * 多态的 this 类型:用于链式调用
  */
 class myThis{
     public constructor(protected value:number = 0){}
