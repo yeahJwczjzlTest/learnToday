@@ -346,3 +346,7 @@ function pluck<T ,K extends keyof T>(o:T,names:K[]):T[K][]{
 /**
  * 不太懂!劳什子索引类型!!!!
  */
+
+/**
+ * 映射类型
+ */
