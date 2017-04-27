@@ -1,0 +1,42 @@
+用户组相关命令={
+    1.useradd 添加用户
+    2.userdel 删除用户
+    3.passwd  修改密码
+    4.groupadd 添加组
+    5.usermod 修改用户
+    6.id 用户名 查看用户信息
+    7.su    切换用户
+    8.sudo  赋予用户权限
+    9.chage 更改查看账户密码信息
+}
+
+/etc/skel 目录作用 => {
+    存放新用户的配置文件,当创建新用户的时候,此目录下的文件会自动复制到新用户的家目录下.
+    此目录下的文件都是隐藏的,通过修改添加删除操作可以为用户预置配置.
+    以提供统一,标准的初始化用户环境
+}
+useradd 命令的配置文件 ={
+    /etc/default/useradd={
+        GROUP=100       依赖于 /etc/login.defs 中 USERGROUPS_ENAB yes 变量控制,如果为 no ,则由此处控制
+        HOME=/home              新建用户家目录位置
+        INACTIVE=-1             是否将过期用户停掉:-1代表不停
+        EXPIRE=                 账号终止日期
+        SHELL=/bin/bash         shell 运行环境,shell 类型
+        SKEL=/etc/skel          新用户配置文件位置
+        CREATE_MAIL_SPOOL=yes   是否创建 mail 文件
+    }
+    可以用 useradd -D 修改 
+}
+
+关于 passwd 命令,批量修改,添加用户密码 可以用 --stdin 来接收={
+    echo 12345|passwd --stdin 用户名
+    或者
+    echo 12345 > 1.log
+    passwd --stdin 用户名 < 1.log
+}
+
+关于 passwd 参数 ={
+    passwd [-k] [-l] [-u [-f]] [-d] [-e] [-n mindays] [-x maxdays] [-w warndays] [-i inactive-
+       days] [-S] [--stdin] [username]
+}
+linux 动态口令
