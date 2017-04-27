@@ -40,3 +40,8 @@ useradd 命令的配置文件 ={
        days] [-S] [--stdin] [username]
 }
 linux 动态口令
+LDAP 管理账户
+
+userdel = {
+    -r 连家目录一起删除
+}
