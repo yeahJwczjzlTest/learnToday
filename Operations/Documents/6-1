@@ -45,3 +45,22 @@ LDAP 管理账户
 userdel = {
     -r 连家目录一起删除
 }
+查询用户信息的相关命令={
+    id
+    finger
+    who - show who is logged on 
+    w - Show who is logged on and what they are doing.
+    users - print the user names of users currently logged in to the current host
+    last, lastb - show listing of last logged in users
+    lastlog = 很重要,查看谁登陆了,查看谁登陆过  /var/log/lastlog
+    groups
+    newgrp
+}
+Linux 用户切换={
+    su - 用户 -c 脚本 -> 在其他用户下执行脚本[
+     -c, --command=COMMAND
+              pass a single COMMAND to the shell with -c]
+    
+    su -l 列出主机上可以使用和被禁用的命令
+
+}
