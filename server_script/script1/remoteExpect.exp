@@ -1,0 +1,29 @@
+#!/usr/bin/expect
+if { $argc !=3 } {
+  send_user "USAGE:expect xxx file host dir\n"
+  exit
+}
+
+#define var
+
+set xfile [lindex $argv 0]
+set xhost [lindex $argv 1]
+set xdir [lindex $argv 2]
+set xpasswd "zhangjie123"
+
+# 
+
+spawn scp -P22 -p $xfile root@$xhost:$xdir
+set timeout 60
+expect {
+	-timeout 2
+	"yes/no" {send "yes\r";exp_continue}
+	"*password:" {send "$xpasswd\r"}
+	timeout {puts "expect connect timeout,pls contact admin.";return}
+
+}
+expect eof
+
+exit -onexit {
+  send_user "bye"
+}

@@ -1,0 +1,12 @@
+#!/usr/bin/expect
+
+spawn ssh -p22 root@172.16.28.138 /sbin/ifconfig eth0
+set timeout 60
+expect {
+	-timeout 1
+	"yes/no" { exp_send "yes\r";exp_continue }
+	"*password:" { exp_send "zhangjie123\r" }
+	timeout	{ puts "expect was timeout by oldboy."; return }
+}
+expect eof
+exit
