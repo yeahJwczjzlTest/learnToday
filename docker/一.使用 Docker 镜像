@@ -1,0 +1,77 @@
+
+
+一.使用 Docker 镜像
+
+
+获取镜像命令 -> 
+        docker pull NAME:[TAG] :: NAME="镜像名称/路径" [TAG]="版本号" 
+        (例:docker pull centos:6.9 <==> docker pull registry.hub.docker.com/centos:6.9)
+        (例:docker pull hub.c.163.com/public/centos:6.9)
+        参数: -a, --all-tags 下载仓库中所有镜像,默认为否
+
+查看镜像 ->
+        docker images
+        参数:
+            -a, --all=ture|false 列出所有的镜像文件,包括临时文件
+            -f, --filter 过滤列出的镜像 
+            --no-trunc=ture|false 对显示结果过长的进行截取
+
+给镜像添加自定义 TAG ->
+        docker tag ubuntu:latest myubuntu:FFFF 添加新 TAG 会显示在查看镜像的结果里单独一行,但是他们的 ID 是一样的,新 TAG 仅仅是一个链接
+
+查看镜像的详细信息 ->
+        docker inspect ubuntu:latest 弹出的信息是一个 JSON 字符串,内容包含 制作者 适应架构 各层的数字摘要 等
+
+查看镜像历史 ->
+        docker history ubuntu:latest 可以加参数 --no-trunc 将截取的片段显示完整
+
+搜索镜像 ->
+        docker search [OPTIONS] TERM 
+        参数:
+            --automated=false|ture 仅显示自动创建的镜像,默认为否
+            -s, --stars=0 星级,默认为 0 输出所有星级的镜像
+        例: docker search --automated -s 3 nginx  搜索3星以上的 nginx 镜像
+
+删除镜像 ->
+        docker rmi [OPTIONS] IMAGE [IMAGE...]
+        参数:
+            -f, --force 强行删除
+        例: docker rmi myubuntu:FFFF 
+        还可以使用 docker rmi [镜像ID] 的方法删除镜像.这种方法会首先查找指向 ID 的所有标签,最后删除本体.
+        当存在镜像创建的容器时,镜像本身是无法被删除.需要先删除容器,再删除镜像.
+        加上参数 -f 可以强制删除上述存在容器的镜像,但是不要这样做.
+
+查看容器 ->
+        docker ps -a  可以查看到本机存在的所有容器.
+        删除容器 docker rm [容器 ID]
+        删除拥有容器的镜像的步骤  docker rm [容器 ID] && docker rmi [镜像ID]
+
+创建镜像 ->
+        1.基于已有镜像的容器创建 -> 该方法主要使用 docker commit 命令
+        格式 : docker commit [OPTIONS] CONTAINER ID [REPOSITORY[:TAG]]
+        例: docker commit -m "add a dir /downloads touch some files" -a "jwczjzl" 40ae23bdfd2d myubuntu:0.01 => 
+                sha256:f2067b8fff219fc28811ca04ac644a1b49db9e5fbab27cce43acbf213dcc5c7a
+        
+        2.基于本地模板导入 -> 主要使用 docker import 命令.可以使用 OpenVZ 提供的模板来导入,也可以通过其他已导出的镜像来创建
+        格式 : docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+        例如,已经下载了 ubuntu-14.04 的模板压缩包就可以这样导入 : cat ubuntu-14.04.tar.gz | docker import - ubuntu:14.04 然后查看 docker images 新的 ububtu-14.04 镜像就已经安装好了
+
+存出和载入镜像 ->
+        1.存出镜像 主要使用 docker save 命令
+        格式 : docker save [OPTIONS] IMAGE [IMAGE...]
+        例: docker save -o ubuntu-latestX.tar ubuntu:latest
+
+        2.载入镜像 主要使用 docker load 命令. 将导入镜像及其相关的元数据信息
+        格式 : docker load [OPTIONS]
+        例: docker load -i [文件路径] 或 docker load < [文件路径]
+
+上传镜像 -> 
+        需要在 docker hub 上注册 
+        格式 : docker push [OPTIONS] NAME[:TAG]
+        首先添加标签 docker tag myubuntu:FFFFF jwczjl/myubuntu:FFFFF 
+        再 push docker push jwczjl/myubuntu:FFFFF 
+        首次上传需要登录.
+
+二.
+
+           
