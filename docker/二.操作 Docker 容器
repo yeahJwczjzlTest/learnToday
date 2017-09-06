@@ -15,4 +15,35 @@
 新建并启动容器 ->
         需要用到的命令是 docker run,等价于 docker create && docker start 
         例: docker run ubuntu:latest /bin/echo "hello" 创建了一个容器,打印了 hello 然后自动终止
+        以守护态运行一个容器 ->
+        docker run -d centos:6.9 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+        查看容器的标准输出 docker logs CONTAINER ID
+
+终止容器 ->
+        使用 docker stop 来终止一个正在运行的容器;
+        格式 : docker stop [OPTIONS] CONTAINER [CONTAINER...]
+        参数 : -t, --time int 多少秒后 kill 容器
+        使用 docker kill 直接终止运行的容器
+        终止后的容器处于 stopped 状态,重新启动需要使用 docker start 启动
+
+进入容器 ->
+        1.使用 docker 自带的 attach 命令;
+        格式 : docker attach [OPTIONS] CONTAINER ID 参数见 help
+        问题,当前窗口如果有程序占用会导致终端不可用,只有等待当前程序执行完毕才可以
+        2.使用自带的 docker exec 命令;
+        格式 : docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+        例: docker exec -it CONTAINER ID /bin/bash 打开一个可交互的虚拟 bash 界面
+
+导入和导出容器 ->
+        导出容器使用 docker export 命令
+        例: docker export -o test.tar CONTAINER ID (容器 ID)
+        导入容器使用 docker import 命令
+        格式 : docker import [OPTIONS] file|URL|- [REPOSITORY[:TAG]]
+        例: docker import test.tar - test/ubuntu:v1.0
+        docker import 和 docker load 命令的区别在于 -> 前者导入将丢失所有历史记录和元数据信息,仅保存容器导出时的快照.
+        而后者会保存所有记录.体积大. 前者导入时可以重新定义标签等元数据信息.
+        
+
+        
+
         
