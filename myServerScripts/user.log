@@ -1,0 +1,60 @@
+userdel -r jwczjzl01
+userdel -r jwczjzl02
+userdel -r jwczjzl03
+userdel -r jwczjzl04
+userdel -r jwczjzl05
+userdel -r jwczjzl06
+userdel -r jwczjzl07
+userdel -r jwczjzl08
+userdel -r jwczjzl09
+userdel -r jwczjzl10
+userdel -r jwczjzl11
+userdel -r jwczjzl12
+userdel -r jwczjzl13
+userdel -r jwczjzl14
+userdel -r jwczjzl15
+userdel -r jwczjzl16
+userdel -r jwczjzl17
+userdel -r jwczjzl18
+userdel -r jwczjzl19
+userdel -r jwczjzl20
+userdel -r jwczjzl21
+userdel -r jwczjzl22
+userdel -r jwczjzl23
+userdel -r jwczjzl24
+userdel -r jwczjzl25
+userdel -r jwczjzl26
+userdel -r jwczjzl27
+userdel -r jwczjzl28
+userdel -r jwczjzl29
+userdel -r jwczjzl30
+useradd jwczjzl01;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl01;echo -e jwczjzl01	"$pass">>/opt/passwd.log
+useradd jwczjzl02;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl02;echo -e jwczjzl02	"$pass">>/opt/passwd.log
+useradd jwczjzl03;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl03;echo -e jwczjzl03	"$pass">>/opt/passwd.log
+useradd jwczjzl04;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl04;echo -e jwczjzl04	"$pass">>/opt/passwd.log
+useradd jwczjzl05;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl05;echo -e jwczjzl05	"$pass">>/opt/passwd.log
+useradd jwczjzl06;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl06;echo -e jwczjzl06	"$pass">>/opt/passwd.log
+useradd jwczjzl07;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl07;echo -e jwczjzl07	"$pass">>/opt/passwd.log
+useradd jwczjzl08;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl08;echo -e jwczjzl08	"$pass">>/opt/passwd.log
+useradd jwczjzl09;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl09;echo -e jwczjzl09	"$pass">>/opt/passwd.log
+useradd jwczjzl10;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl10;echo -e jwczjzl10	"$pass">>/opt/passwd.log
+useradd jwczjzl11;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl11;echo -e jwczjzl11	"$pass">>/opt/passwd.log
+useradd jwczjzl12;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl12;echo -e jwczjzl12	"$pass">>/opt/passwd.log
+useradd jwczjzl13;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl13;echo -e jwczjzl13	"$pass">>/opt/passwd.log
+useradd jwczjzl14;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl14;echo -e jwczjzl14	"$pass">>/opt/passwd.log
+useradd jwczjzl15;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl15;echo -e jwczjzl15	"$pass">>/opt/passwd.log
+useradd jwczjzl16;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl16;echo -e jwczjzl16	"$pass">>/opt/passwd.log
+useradd jwczjzl17;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl17;echo -e jwczjzl17	"$pass">>/opt/passwd.log
+useradd jwczjzl18;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl18;echo -e jwczjzl18	"$pass">>/opt/passwd.log
+useradd jwczjzl19;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl19;echo -e jwczjzl19	"$pass">>/opt/passwd.log
+useradd jwczjzl20;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl20;echo -e jwczjzl20	"$pass">>/opt/passwd.log
+useradd jwczjzl21;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl21;echo -e jwczjzl21	"$pass">>/opt/passwd.log
+useradd jwczjzl22;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl22;echo -e jwczjzl22	"$pass">>/opt/passwd.log
+useradd jwczjzl23;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl23;echo -e jwczjzl23	"$pass">>/opt/passwd.log
+useradd jwczjzl24;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl24;echo -e jwczjzl24	"$pass">>/opt/passwd.log
+useradd jwczjzl25;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl25;echo -e jwczjzl25	"$pass">>/opt/passwd.log
+useradd jwczjzl26;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl26;echo -e jwczjzl26	"$pass">>/opt/passwd.log
+useradd jwczjzl27;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl27;echo -e jwczjzl27	"$pass">>/opt/passwd.log
+useradd jwczjzl28;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl28;echo -e jwczjzl28	"$pass">>/opt/passwd.log
+useradd jwczjzl29;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl29;echo -e jwczjzl29	"$pass">>/opt/passwd.log
+useradd jwczjzl30;pass=$((RANDOM+10000000));echo "$pass"|passwd --stdin jwczjzl30;echo -e jwczjzl30	"$pass">>/opt/passwd.log
