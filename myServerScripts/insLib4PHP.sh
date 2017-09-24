@@ -19,4 +19,6 @@ cd libiconv-1.15 &&\
 make && make install &&\
 echo $? && echo 'ooooooooook!!' &&\
 cd .. &&\
-rm -rf libiconv-*
+echo $? &&\
+rm -rf libiconv-* &&\
+echo $?
