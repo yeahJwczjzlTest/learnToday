@@ -18,4 +18,5 @@ cd /application/mysql/support-files/ && \
 sed -i 's#/usr/local/mysql#/application/mysql#g' mysql.server &&\
 cp mysql.server /etc/init.d/mysqld && chmod +x /etc/init.d/mysqld &&\
 sed -i 's#PATH=$PATH:$HOME/bin#PATH=/application/mysql/bin:$PATH:$HOME/bin#g' ~/.bash_profile &&\
+source ~/.bash_profile &&\
 tail -1 /tmp/mysql.log
